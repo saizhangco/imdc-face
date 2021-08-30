@@ -39,7 +39,7 @@ public class Main implements ApplicationRunner {
         String[] argStr = args.getSourceArgs();
         faceService.init();
 
-        mainFrame.setUserId(argStr[1]);
+        mainFrame.setUserId(argStr[0]);
         mainFrame.setTitle("人脸识别控制面板");
     }
 }
