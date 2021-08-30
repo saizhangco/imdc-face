@@ -143,11 +143,20 @@ public class MainFrame extends JFrame {
                 result.setResult("SystemError");
             }
             if (Objects.equals(result.getResult(), "Successful")) {
+                // 停掉所有的人脸识别线程
+                faceService.stop();
                 JOptionPane.showMessageDialog(null, String.format("%s, %d, %f", result.getResult(), result.getIndex(), result.getScore()));
             } else {
+                // 停掉所有的人脸识别线程
+                faceService.stop();
                 JOptionPane.showMessageDialog(null, String.format("%s", result.getResult()));
             }
             systemEnv.setFaceStop(true);
+            try {
+                this.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }).start();
     }
 
