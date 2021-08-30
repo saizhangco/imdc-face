@@ -36,10 +36,7 @@ public class Main implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String[] argStr = args.getSourceArgs();
         faceService.init();
-
-        mainFrame.setUserId(argStr[0]);
         mainFrame.setTitle("人脸识别控制面板");
     }
 }

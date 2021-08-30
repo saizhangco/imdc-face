@@ -39,8 +39,7 @@ public class MainFrame extends JFrame {
     @Autowired
     private FaceService faceService;
 
-    @Setter
-    private String userId;
+    private JTextField textField;
 
     @Setter
     private String title = "人脸识别控制面板";
@@ -80,6 +79,10 @@ public class MainFrame extends JFrame {
             }
         });
 
+
+        textField = new JTextField(10);
+
+        jPanel.add(textField);
         jPanel.add(jButton1);
         jPanel.add(jButton2);
         jPanel.add(jButton3);
@@ -101,10 +104,10 @@ public class MainFrame extends JFrame {
 
     public void startButtonOnClick() {
         HttpFaceInfo httpFaceInfo = new HttpFaceInfo();
-        if (!StringUtils.hasText(userId)) {
+        if (!StringUtils.hasText(textField.getText())) {
             throw new RuntimeException("args is empty.");
         } else {
-            httpFaceInfo.setUserId(userId);
+            httpFaceInfo.setUserId(textField.getText());
         }
         log.info("{}", httpFaceInfo.getUserId());
         startFace(httpFaceInfo);
