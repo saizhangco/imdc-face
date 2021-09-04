@@ -19,7 +19,6 @@ public class Main implements ApplicationRunner {
     public static void main(String[] args) {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(Main.class);
         builder.headless(false).run(args);
-        // ApplicationContext applicationContext = SpringApplication.run(Main.class, args);
     }
 
     @Autowired
@@ -37,6 +36,6 @@ public class Main implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         faceService.init();
-        mainFrame.setTitle("人脸识别控制面板");
+        mainFrame.setTitle("Face Control Panel");
     }
 }

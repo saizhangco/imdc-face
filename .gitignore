@@ -1,6 +1,5 @@
 ### Maven template
 target/
-cache/
 .idea/
 ArcFace64.dat
 pom.xml.tag
@@ -13,4 +12,5 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+imdc-face.jar
 

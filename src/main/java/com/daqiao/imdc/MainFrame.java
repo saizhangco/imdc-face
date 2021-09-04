@@ -42,12 +42,10 @@ public class MainFrame extends JFrame {
     private JTextField textField;
 
     @Setter
-    private String title = "人脸识别控制面板";
+    private String title = "Face Control Panel";
 
     public MainFrame() {
-        if (StringUtils.hasText(title)) {
-            setTitle(title);
-        }
+        setTitle(title);
         setSize(WIDTH, HEIGHT);
 
         //得到窗口的容器
@@ -130,19 +128,19 @@ public class MainFrame extends JFrame {
             }
             // 超时
             if (isTimeout) {
-                log.error("人脸识别超时");
+                log.error("Face Timeout!");
                 result.setResult("Timeout");
             } else if (systemEnv.isFaceStop()) {
-                log.error("人脸识别被强制终止");
+                log.error("Face was make stopped!");
                 result.setResult("FaceStop");
             } else if (systemEnv.isFaceSuccessful()) {
-                log.info("识别成功");
+                log.info("Face Successful!");
                 result.setResult("Successful");
                 // 图片索引、分数
                 result.setIndex(systemEnv.getHttpFaceResult().getIndex());
                 result.setScore(systemEnv.getHttpFaceResult().getScore());
             } else {
-                log.info("识别失败");
+                log.info("Face Failed!");
                 result.setResult("SystemError");
             }
             if (Objects.equals(result.getResult(), "Successful")) {
@@ -155,11 +153,6 @@ public class MainFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, String.format("%s", result.getResult()));
             }
             systemEnv.setFaceStop(true);
-            try {
-                this.clone();
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-            }
         }).start();
     }
 
